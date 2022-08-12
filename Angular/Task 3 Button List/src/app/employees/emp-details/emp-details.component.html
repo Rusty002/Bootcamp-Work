@@ -1,0 +1,26 @@
+<div *ngIf="tempEmployee !== undefined">
+    <h2>{{tempEmployee.name | uppercase}}</h2>
+    <div><b>Id: {{tempEmployee.id}}</b></div>
+    <div class="example-button-row">
+      <button mat-button color="primary" (click)="PreviousEmployee(tempEmployee)">Previous</button>
+    </div>
+    <div>
+      <label for="emp-id">Employee ID: </label>
+      <input id="emp-id" value="{{tempEmployee.id}}" placeholder="Employee ID">
+    </div>
+    <div>
+      <label for="emp-name">Employee name: </label>
+      <input id="emp-name" value="{{tempEmployee.name}}" placeholder="Employee Name">
+    </div>
+    <div>
+      <label for="emp-role">Employee Role: </label>
+      <input id="emp-role" value="{{tempEmployee.role}}" placeholder="Emplyee Role">
+    </div>
+    <div>
+      <label for="emp-gender">Employee Gender: </label>
+      <input id="emp-gender" value="{{tempEmployee.gender}}" placeholder="Employee Gender">
+    </div>
+    <div class="example-button-row">
+      <button mat-button color="primary" (click)="NextEmployee(tempEmployee)">Next</button>
+    </div>
+</div>
