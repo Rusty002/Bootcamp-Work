@@ -21,6 +21,14 @@ export class ShowComponent implements OnInit {
   activateDetails:boolean=false;
   tempEmp:any;
 
+  // For Filtering
+  employeeIDFilter:string="";
+  employeeNameFilter:string="";
+  employeeCityFilter:string="";
+  employeeGenderFilter:string="";
+  employeeListWithoutFilter:any=[];
+
+
   ngOnInit(): void {
     this.refreshEmployeeList();
   }
@@ -28,6 +36,7 @@ export class ShowComponent implements OnInit {
   refreshEmployeeList(){
     this.service.getEmpList().subscribe(data =>{
       this.employeeList=data;
+      this.employeeListWithoutFilter=data;
     });
   }
 
@@ -67,5 +76,27 @@ export class ShowComponent implements OnInit {
     this.tempEmp=emp;
     this.modalTitle="Details of Employee";
     this.activateDetails=true;
+  }
+
+  filterFunction(){
+    var EmployeeIDFilter = this.employeeIDFilter;
+    var EmployeeNameFilter = this.employeeNameFilter;
+    var EmployeeCityFilter = this.employeeCityFilter;
+    var EmployeeGenderFilter = this.employeeGenderFilter;
+
+    this.employeeList = this.employeeListWithoutFilter.filter(function (el:any){
+      return el.EmployeeID.toString().toLowerCase().includes(
+        EmployeeIDFilter.toString().trim().toLowerCase()
+      )&& 
+      el.EmpName.toString().toLowerCase().includes(
+        EmployeeNameFilter.toString().trim().toLowerCase()
+      )&&
+      el.Gender.toString().toLowerCase().includes(
+        EmployeeGenderFilter.toString().trim().toLowerCase()
+      )&&
+      el.City.toString().toLowerCase().includes(
+        EmployeeCityFilter.toString().trim().toLowerCase()
+      )
+    });
   }
 }
