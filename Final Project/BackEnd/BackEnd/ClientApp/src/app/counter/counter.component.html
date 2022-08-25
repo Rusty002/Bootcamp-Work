@@ -1,0 +1,46 @@
+<style>
+  input.ng-touched.ng-invalid{
+    border: 2px solid red;
+}
+</style>
+
+<h1>Penalty Calculator</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form [formGroup]="penaltyForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="startdate">
+            Issue Date:
+          </label>
+          <input formControlName="startDate" type="date" class="form-control">
+          <span *ngIf="penaltyForm.get('startDate')?.touched && penaltyForm.get('startDate')?.hasError('required')">Date is Required</span>
+        </div>
+        <div class="form-group">
+          <label for="lastdate">
+            Return Date:
+          </label>
+          <input formControlName="lastDate" type="date" class="form-control">
+          <span *ngIf="penaltyForm.get('lastDate')?.touched && penaltyForm.get('lastDate')?.hasError('required')">Date is Required</span>
+        </div>
+        <!-- For Dropdown -->
+        <div class="dropdown mb-3">
+          <div class="col-sm-6">
+            <select (change)="setCountry()" formControlName="country">
+              <option>--Select a Country--</option>
+              <option *ngFor="let country of countrylist" [ngValue]="country.id">
+                {{country.country_Name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" [disabled]="!penaltyForm.valid">
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

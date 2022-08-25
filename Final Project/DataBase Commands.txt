@@ -1,0 +1,44 @@
+use AbdurRehman;
+
+CREATE TABLE COUNTRIES(
+	ID int identity(1,1) PRIMARY KEY,
+	Country VARCHAR(255) NOT NULL,
+	SpecialTax int,
+	Currency varchar(255) not null,
+	Penalty int not null,
+	WeekEnd1 int NOT NULL,
+	WeekEnd2 int NOT Null
+)
+
+SELECT * FROM COUNTRIES
+
+Insert into COUNTRIES values ('Pakistan', 0, 'Rs',50,6,0)
+Insert into COUNTRIES values ('United Arab Emirates', 8, 'DH',5,5,6)
+
+CREATE TABLE HOLIDAYS(
+	HolidayID int identity(1,1) PRIMARY KEY,
+	Holiday varchar(255) not null,
+	StartDate date not null,
+	EndDate date not NULL,
+	Country_Id int FOREIGN KEY REFERENCES COUNTRIES(ID)
+)
+
+SELECT * FROM HOLIDAYS
+
+insert into HOLIDAYS values('Independece Day', '2022-08-14', '2022-08-14', 1)
+insert into HOLIDAYS values('Quaid-e-Azam Day / Christmas Day ', '2022-12-25', '2022-12-25', 1)
+insert into HOLIDAYS values('Eid ul Adha', '2022-07-08', '2022-07-12', 1)
+insert into HOLIDAYS values('Eid ul Fitr', '2022-05-02', '2022-05-05', 1)
+insert into HOLIDAYS values('Labour Day', '2022-05-01', '2022-05-01', 1)
+insert into HOLIDAYS values('Pakistan Day', '2022-03-22', '2022-03-24', 1)
+insert into HOLIDAYS values('Kashmir Solidarirty Day', '2022-02-05', '2022-02-05', 1)
+insert into HOLIDAYS values('Prophet (PBUH) Birthday', '2022-09-07', '2022-09-07', 1)
+insert into HOLIDAYS values('Ashura Day', '2022-08-07', '2022-08-08', 1)
+insert into HOLIDAYS values('New Year Day', '2022-01-01', '2022-01-01', 2)
+insert into HOLIDAYS values('Eid Al Fitr', '2022-04-30', '2022-05-04', 2)
+insert into HOLIDAYS values('Eid Al Adha', '2022-07-07', '2022-07-11', 2)
+insert into HOLIDAYS values('Day of Arafat', '2022-07-08', '2022-07-08', 2)
+insert into HOLIDAYS values('Islamic New Year', '2022-07-29', '2022-07-30', 2)
+insert into HOLIDAYS values('Prophet (PBUH) Birthday', '2022-09-07', '2022-09-08', 2)
+insert into HOLIDAYS values('Commemoration Day', '2022-11-30', '2022-11-30', 2)
+insert into HOLIDAYS values('National Day', '2022-12-02', '2022-12-02', 2)
